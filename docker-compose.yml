@@ -1,6 +1,5 @@
 services:
   homebox:
-    image: homebox
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -15,5 +14,11 @@ services:
     environment:
       - HBOX_DEBUG=true
       - HBOX_LOGGER_LEVEL=-1
+      - HBOX_LOG_LEVEL=info
+      - HBOX_LOG_FORMAT=text
+      - HBOX_WEB_MAX_FILE_UPLOAD=10
+      - HBOX_OPTIONS_ALLOW_ANALYTICS=false
     ports:
       - 3100:7745
+    volumes:
+      - /mnt/shared/docker/homebox/data:/data/
